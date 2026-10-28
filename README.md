@@ -1,20 +1,26 @@
 # Tom Craven Photography
 
-A photography portfolio with four collections: Nature, City, Nightlife and Weddings.
+A static portfolio for Cloudflare Workers with four galleries: Nature, City, Nightlife and Weddings. Full-size photos are stored separately in Cloudflare R2. The gallery grid asks Cloudflare for a smaller preview; selecting a photo loads the original.
 
-## Add your photographs
+## Photo folders and filenames
 
-Each gallery has eight numbered photo slots. Add your own JPEGs to the matching folder, using the filenames exactly as shown:
+Upload JPEGs to the matching folder in the R2 bucket connected to `photos.tomcraven.uk`. Keep the exact filenames so the pages find them automatically.
 
-| Gallery | Folder | Filenames |
+| Gallery | R2 folder | File names |
 | --- | --- | --- |
 | Nature | `images/nature/` | `nature-01.jpg` to `nature-08.jpg` |
 | City | `images/city/` | `city-01.jpg` to `city-08.jpg` |
 | Nightlife | `images/nightlife/` | `nightlife-01.jpg` to `nightlife-08.jpg` |
 | Weddings | `images/weddings/` | `weddings-01.jpg` to `weddings-08.jpg` |
 
-Keep the same names when replacing photos and the galleries will pick them up automatically. JPEG format is expected. Each gallery folder also contains a short note.
+For example, upload a file named `nature-01.jpg` into `images/nature/`. It appears in that gallery and as the featured nature photo on the home page. Replace a photo by uploading a new file with the same name. The website code and photos are managed separately, so adding photos does not require editing HTML or committing large images to GitHub.
 
-## Preview
+## Preparing photos
 
-[Open the V4 preview](https://v4.tomcraven.uk). The main website stays separate until you are ready to switch over.
+Upload a high-quality JPEG as the original. Cloudflare creates a 1,200-pixel-wide grid preview automatically. When a visitor opens a photo, the browser loads the original from R2. Keep filenames lowercase and use hyphens exactly as shown above.
+
+The R2 bucket must be connected to the `photos.tomcraven.uk` custom domain, and Cloudflare Image Transformations must be enabled for the domain. Only portfolio photographs should be placed in that publicly served bucket: files in it can be viewed by anyone with the URL.
+
+## Galleries
+
+Each gallery has eight numbered spaces. The pages live in `galleries/`; the shared layout and photo-viewer behavior are in `assets/`. To add more spaces later, add another numbered photo tile to the matching gallery page and upload its image to the corresponding R2 folder.
