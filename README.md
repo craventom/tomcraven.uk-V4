@@ -8,10 +8,10 @@ Upload JPEGs to the matching folder in the R2 bucket connected to `photos.tomcra
 
 | Gallery | R2 folder | File names |
 | --- | --- | --- |
-| Nature | `images/nature/` | `nature-01.jpg` to `nature-08.jpg` |
-| City | `images/city/` | `city-01.jpg` to `city-08.jpg` |
-| Nightlife | `images/nightlife/` | `nightlife-01.jpg` to `nightlife-08.jpg` |
-| Weddings | `images/weddings/` | `weddings-01.jpg` to `weddings-08.jpg` |
+| Nature | `images/nature/` | `nature-01.jpg` to `nature-09.jpg` |
+| City | `images/city/` | `city-01.jpg` to `city-09.jpg` |
+| Nightlife | `images/nightlife/` | `nightlife-01.jpg` to `nightlife-09.jpg` |
+| Weddings | `images/weddings/` | `weddings-01.jpg` to `weddings-09.jpg` |
 
 For example, upload a file named `nature-01.jpg` into `images/nature/`. It appears in that gallery and as the featured nature photo on the home page. Replace a photo by uploading a new file with the same name. The website code and photos are managed separately, so adding photos does not require editing HTML or committing large images to GitHub.
 
@@ -23,4 +23,4 @@ The R2 bucket must be connected to the `photos.tomcraven.uk` custom domain, and 
 
 ## Galleries
 
-Each gallery has eight numbered spaces. The pages live in `galleries/`; the shared layout and photo-viewer behavior are in `assets/`. To add more spaces later, add another numbered photo tile to the matching gallery page and upload its image to the corresponding R2 folder.
+Each gallery has nine numbered spaces. The pages live in `galleries/`; the shared layout and photo-viewer behavior are in `assets/`. To add more spaces later, add another numbered photo tile to the matching gallery page and upload its image to the corresponding R2 folder.
