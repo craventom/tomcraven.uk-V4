@@ -1,4 +1,15 @@
+// Store original portfolio images in Cloudflare R2 under the same folders and
+// filenames used by the galleries. Cloudflare serves a resized preview here;
+// the original is requested only when a visitor opens the photograph.
+const photoOrigin = 'https://photos.tomcraven.uk';
+
 document.querySelectorAll('[data-photo]').forEach((image) => {
+  const imagePath = image.getAttribute('src').replace(/^\//, '');
+  image.dataset.full = `${photoOrigin}/${imagePath}`;
+  image.src = `${photoOrigin}/cdn-cgi/image/width=1200,quality=82,format=auto/${imagePath}`;
+  image.loading = 'lazy';
+  image.decoding = 'async';
+
   const frame = image.closest('.photo-frame, .photo-tile');
   const showPhoto = () => frame?.classList.add('has-photo');
   const showPlaceholder = () => frame?.classList.remove('has-photo');
@@ -31,7 +42,7 @@ document.querySelectorAll('.photo-tile').forEach((tile) => {
   const openPhoto = () => {
     const image = tile.querySelector('img');
     if (!image?.naturalWidth) return;
-    dialogImage.src = image.src;
+    dialogImage.src = image.dataset.full;
     dialogImage.alt = image.alt;
     dialogCaption.textContent = tile.dataset.caption || image.alt;
     dialog.showModal();
